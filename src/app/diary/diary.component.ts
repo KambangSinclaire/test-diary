@@ -42,6 +42,7 @@ export class DiaryComponent implements OnInit {
       this.DiaryList.push(this.textArea);
       localStorage.setItem("diary", JSON.stringify(this.DiaryList))
       this.textArea = "";
+      this.isEmojiPickerVisible = false;
     } else {
       alert("Cannot save an empty diary");
     }
