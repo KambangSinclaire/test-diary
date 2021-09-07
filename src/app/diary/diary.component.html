@@ -1,0 +1,53 @@
+<div class="diary-container">
+  <mat-card class="diary">
+    <div class="card-header">
+      <span>Your Diary</span>
+      <mat-icon class="material-icons">east</mat-icon>
+    </div>
+
+    <mat-card-content>
+
+      <!-- <mat-form-field class="example-full-width" appearance="fill"> -->
+        <textarea
+          matInput
+          placeholder="Add to diary..."
+          type="text"
+          name="textarea"
+          [(ngModel)]="textArea"
+        >
+        </textarea>
+      <!-- </mat-form-field> -->
+
+      <emoji-mart
+        class="emoji-mart-var"
+        *ngIf="isEmojiPickerVisible"
+        (emojiSelect)="addEmoji($event)"
+        title="Choose your emoji"
+      >
+      </emoji-mart>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+        mat-flat-button
+        (click)="isEmojiPickerVisible = !isEmojiPickerVisible"
+      >
+        😀
+      </button>
+      <button mat-button class="save" (click)="saveItem()">save</button>
+    </mat-card-actions>
+
+    <mat-card-footer>
+      <div class="saved-diary-items" *ngIf="textArea !== ''">
+        <span class="input-text">{{textArea}}</span>
+        <mat-icon>more_vert</mat-icon>
+      </div>
+
+      <div class="saved-diary-items" *ngFor="let item of DiaryList">
+        <span class="input-text">{{item}}</span>
+        <mat-icon>more_vert</mat-icon>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>
