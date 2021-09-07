@@ -41,6 +41,7 @@ export class DiaryComponent implements OnInit {
     if (this.textArea !== "") {
       this.DiaryList.push(this.textArea);
       localStorage.setItem("diary", JSON.stringify(this.DiaryList))
+      this.textArea = "";
     } else {
       alert("Cannot save an empty diary");
     }
