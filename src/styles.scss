@@ -2,10 +2,14 @@
 @import "~@ctrl/ngx-emoji-mart/picker";
 body {
   background-color: #e5e5e5;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
 
-  mat-icon,button{
-      cursor: pointer;
+  mat-icon,
+  button {
+    cursor: pointer;
   }
 }

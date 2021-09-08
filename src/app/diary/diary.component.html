@@ -6,16 +6,15 @@
     </div>
 
     <mat-card-content>
-
       <!-- <mat-form-field class="example-full-width" appearance="fill"> -->
-        <textarea
-          matInput
-          placeholder="Add to diary..."
-          type="text"
-          name="textarea"
-          [(ngModel)]="textArea"
-        >
-        </textarea>
+      <textarea
+        matInput
+        placeholder="Add to diary..."
+        type="text"
+        name="textarea"
+        [(ngModel)]="textArea"
+      >
+      </textarea>
       <!-- </mat-form-field> -->
 
       <emoji-mart
@@ -25,7 +24,6 @@
         title="Choose your emoji"
       >
       </emoji-mart>
-
     </mat-card-content>
 
     <mat-card-actions>
@@ -33,20 +31,29 @@
         mat-flat-button
         (click)="isEmojiPickerVisible = !isEmojiPickerVisible"
       >
-        😀
+        <mat-icon>emoji_emotions_outline</mat-icon>
       </button>
       <button mat-button class="save" (click)="saveItem()">save</button>
     </mat-card-actions>
 
     <mat-card-footer>
       <div class="saved-diary-items" *ngIf="textArea !== ''">
-        <span class="input-text">{{textArea}}</span>
-        <mat-icon>more_vert</mat-icon>
+        <span class="input-text">{{ textArea }}</span>
+        <!-- <mat-icon>more_vert</mat-icon> -->
       </div>
 
       <div class="saved-diary-items" *ngFor="let item of DiaryList">
-        <span class="input-text">{{item}}</span>
-        <mat-icon>more_vert</mat-icon>
+        <div class="event-info-container">
+          <p class="time-info">
+            <mat-icon>event_note</mat-icon>
+            <span
+              >&nbsp; {{ item?.time }} {{ item?.time > '12:00:00' ? 'PM' : 'AM' }}  &nbsp; | &nbsp;  {{ item?.month }} &nbsp;  {{ item?.day }},&nbsp; 
+              {{ item?.year }}</span
+            >
+          </p>
+          <mat-icon>more_vert</mat-icon>
+        </div>
+        <span class="input-text">{{ item?.text }}</span>
       </div>
     </mat-card-footer>
   </mat-card>

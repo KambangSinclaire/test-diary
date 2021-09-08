@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiaryComponent implements OnInit {
 
-  DiaryList: string[] = [];
-  disabled: boolean = false;
-
+  DiaryList: any[] = [];
   emoji: any;
 
   textArea: string = '';
@@ -39,7 +37,15 @@ export class DiaryComponent implements OnInit {
 
   saveItem() {
     if (this.textArea !== "") {
-      this.DiaryList.push(this.textArea);
+      let currentDate = Date().split(' ');
+      let item = {
+        text:this.textArea,
+        time:currentDate[4],
+        day:currentDate[2],
+        month:currentDate[1],
+        year:currentDate[3]
+      }
+      this.DiaryList.push(item);
       localStorage.setItem("diary", JSON.stringify(this.DiaryList))
       this.textArea = "";
       this.isEmojiPickerVisible = false;
